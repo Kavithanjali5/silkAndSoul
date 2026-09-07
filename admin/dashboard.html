@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Silk & Soul</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <div class="mark">✦</div>
+        <div>
+          <strong>Silk & Soul</strong>
+          <span>Admin Panel</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="dashboard" onclick="switchView('dashboard')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </button>
+        <button class="nav-item" data-view="inventory" onclick="switchView('inventory')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          Inventory
+        </button>
+        <button class="nav-item" data-view="payments" onclick="switchView('payments')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Payments
+        </button>
+        <button class="nav-item" data-view="users" onclick="switchView('users')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Users
+        </button>
+        <button class="nav-item" data-view="admins" onclick="switchView('admins')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Admins
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="admin-user-chip" id="sidebarUser"></div>
+        <button class="nav-item" onclick="logoutAdmin()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logout
+        </button>
+        <a class="nav-item" href="../index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          View Store
+        </a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button class="mobile-menu-btn" onclick="openSidebar()" aria-label="Menu">☰</button>
+          <div>
+            <h2 id="pageTitle">Dashboard</h2>
+            <p id="pageSubtitle">Overview of store performance</p>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn-admin btn-admin-outline btn-admin-sm" onclick="resetDemoData()">Reset Data</button>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <!-- DASHBOARD -->
+        <section class="view active" id="view-dashboard">
+          <div class="stats-grid" id="dashStats"></div>
+
+          <div class="panel-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Revenue Trend</h3>
+                <span class="hint">Last 7 days</span>
+              </div>
+              <div class="chart-wrap">
+                <canvas id="chartRevenue"></canvas>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Sales by Category</h3>
+                <span class="hint">Share of orders</span>
+              </div>
+              <div class="chart-wrap chart-wrap-sm">
+                <canvas id="chartCategory"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Payment Methods</h3>
+                <span class="hint">Volume breakdown</span>
+              </div>
+              <div class="chart-wrap chart-wrap-sm">
+                <canvas id="chartMethods"></canvas>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Recent Activity</h3>
+              </div>
+              <div class="activity-list" id="dashActivity"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- INVENTORY -->
+        <section class="view" id="view-inventory">
+          <div class="stats-grid" id="invStats" style="grid-template-columns:repeat(4,1fr)"></div>
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <div class="search-field">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" class="admin-input" id="invSearch" placeholder="Search products..." oninput="renderInventory()">
+              </div>
+              <select class="filter-select" id="invFilter" onchange="renderInventory()">
+                <option value="all">All status</option>
+                <option value="in_stock">In stock</option>
+                <option value="low_stock">Low stock</option>
+                <option value="out_of_stock">Out of stock</option>
+              </select>
+              <select class="filter-select" id="invCategory" onchange="renderInventory()">
+                <option value="all">All categories</option>
+                <option value="banarasi">Banarasi</option>
+                <option value="kanjeevaram">Kanjeevaram</option>
+                <option value="silk">Silk</option>
+                <option value="cotton">Cotton</option>
+                <option value="designer">Designer</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn-admin btn-admin-primary btn-admin-sm" onclick="openInventoryModal()">+ Add Product</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>SKU</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="invTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- PAYMENTS -->
+        <section class="view" id="view-payments">
+          <div class="stats-grid" id="payStats"></div>
+          <div class="panel" style="margin-bottom:16px">
+            <div class="panel-header">
+              <h3>Payment Status Overview</h3>
+            </div>
+            <div class="chart-wrap chart-wrap-sm">
+              <canvas id="chartPaymentStatus"></canvas>
+            </div>
+          </div>
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <div class="search-field">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" class="admin-input" id="paySearch" placeholder="Search payments..." oninput="renderPayments()">
+              </div>
+              <select class="filter-select" id="payFilter" onchange="renderPayments()">
+                <option value="all">All status</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="failed">Failed</option>
+                <option value="refunded">Refunded</option>
+              </select>
+              <select class="filter-select" id="payMethod" onchange="renderPayments()">
+                <option value="all">All methods</option>
+                <option value="UPI">UPI</option>
+                <option value="Card">Card</option>
+                <option value="Net Banking">Net Banking</option>
+                <option value="COD">COD</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn-admin btn-admin-gold btn-admin-sm" onclick="openPaymentModal()">+ Record Payment</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Payment ID</th>
+                  <th>Customer</th>
+                  <th>Product</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="payTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- USERS -->
+        <section class="view" id="view-users">
+          <div class="stats-grid" id="userStats"></div>
+          <div class="panel-grid" style="margin-bottom:16px">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Top Spenders</h3>
+              </div>
+              <div class="chart-wrap chart-wrap-sm">
+                <canvas id="chartTopUsers"></canvas>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <h3>User Status</h3>
+              </div>
+              <div class="chart-wrap chart-wrap-sm">
+                <canvas id="chartUserStatus"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <div class="search-field">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" class="admin-input" id="userSearch" placeholder="Search users..." oninput="renderUsers()">
+              </div>
+              <select class="filter-select" id="userFilter" onchange="renderUsers()">
+                <option value="all">All status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="blocked">Blocked</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn-admin btn-admin-primary btn-admin-sm" onclick="openUserModal()">+ Add User</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Contact</th>
+                  <th>City</th>
+                  <th>Orders</th>
+                  <th>Spent</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="userTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ADMINS -->
+        <section class="view" id="view-admins">
+          <div class="role-cards" id="adminRoleCards"></div>
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <div class="search-field">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" class="admin-input" id="adminSearch" placeholder="Search admins..." oninput="renderAdmins()">
+              </div>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn-admin btn-admin-primary btn-admin-sm" onclick="openAdminModal()">+ Add Admin</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Admin</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Last Login</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminTableBody"></tbody>
+            </table>
+          </div>
+          <div class="panel" style="margin-top:16px">
+            <div class="panel-header">
+              <h3>Admin Activity Log</h3>
+            </div>
+            <div class="activity-list" id="adminActivity"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Inventory Modal -->
+  <div class="modal-overlay" id="invModal">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h3 id="invModalTitle">Add Product</h3>
+        <button class="modal-close" onclick="closeModal('invModal')">×</button>
+      </div>
+      <form id="invForm" onsubmit="saveInventoryItem(event)">
+        <div class="modal-body">
+          <input type="hidden" id="invId">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Product Name</label>
+              <input type="text" id="invName" required>
+            </div>
+            <div class="form-group">
+              <label>SKU</label>
+              <input type="text" id="invSku" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category</label>
+              <select id="invCat" required>
+                <option value="banarasi">Banarasi</option>
+                <option value="kanjeevaram">Kanjeevaram</option>
+                <option value="silk">Silk</option>
+                <option value="cotton">Cotton</option>
+                <option value="designer">Designer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Fabric</label>
+              <input type="text" id="invFabric" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Price (₹)</label>
+              <input type="number" id="invPrice" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Original Price (₹)</label>
+              <input type="number" id="invOrigPrice" min="0">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Stock Quantity</label>
+              <input type="number" id="invStock" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Reorder Level</label>
+              <input type="number" id="invReorder" min="0" value="8" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Product Photo</label>
+            <input type="hidden" id="invImage" value="images/products/saree-01.svg">
+            <div class="image-upload-box" id="invUploadBox">
+              <img id="invImagePreview" alt="Preview" hidden>
+              <div class="upload-placeholder" id="invUploadPlaceholder">
+                <span>📷</span>
+                <strong>Upload from device</strong>
+                <small>Gallery or camera · JPG, PNG, WEBP</small>
+              </div>
+              <div class="upload-actions">
+                <label class="btn-admin btn-admin-outline btn-admin-sm" for="invFileInput">Choose Photo</label>
+                <label class="btn-admin btn-admin-gold btn-admin-sm" for="invCameraInput">Take Photo</label>
+                <button type="button" class="btn-admin btn-admin-danger btn-admin-sm" id="invClearImage" onclick="clearInvImage()" hidden>Remove</button>
+              </div>
+              <input type="file" id="invFileInput" accept="image/*" hidden onchange="handleInvImageFile(this)">
+              <input type="file" id="invCameraInput" accept="image/*" capture="environment" hidden onchange="handleInvImageFile(this)">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-outline" onclick="closeModal('invModal')">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin-primary">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal-overlay" id="payModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="payModalTitle">Record Payment</h3>
+        <button class="modal-close" onclick="closeModal('payModal')">×</button>
+      </div>
+      <form id="payForm" onsubmit="savePayment(event)">
+        <div class="modal-body">
+          <input type="hidden" id="payEditId">
+          <div class="form-group">
+            <label>Customer</label>
+            <select id="payUser" required></select>
+          </div>
+          <div class="form-group">
+            <label>Product / Description</label>
+            <input type="text" id="payProduct" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Amount (₹)</label>
+              <input type="number" id="payAmount" min="1" required>
+            </div>
+            <div class="form-group">
+              <label>Method</label>
+              <select id="payMethodSelect" required>
+                <option>UPI</option>
+                <option>Card</option>
+                <option>Net Banking</option>
+                <option>COD</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select id="payStatus" required>
+              <option value="completed">Completed</option>
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+              <option value="failed">Failed</option>
+              <option value="refunded">Refunded</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-outline" onclick="closeModal('payModal')">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin-primary">Save Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- User Modal -->
+  <div class="modal-overlay" id="userModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="userModalTitle">Add User</h3>
+        <button class="modal-close" onclick="closeModal('userModal')">×</button>
+      </div>
+      <form id="userForm" onsubmit="saveUser(event)">
+        <div class="modal-body">
+          <input type="hidden" id="userId">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="userName" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="userEmail" required>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text" id="userPhone" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" id="userCity" required>
+            </div>
+            <div class="form-group">
+              <label>Status</label>
+              <select id="userStatus" required>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="blocked">Blocked</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-outline" onclick="closeModal('userModal')">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin-primary">Save User</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Modal -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="adminModalTitle">Add Admin</h3>
+        <button class="modal-close" onclick="closeModal('adminModal')">×</button>
+      </div>
+      <form id="adminForm" onsubmit="saveAdmin(event)">
+        <div class="modal-body">
+          <input type="hidden" id="adminId">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="adminName" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="adminEmail" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Password</label>
+              <input type="text" id="adminPassword" required>
+            </div>
+            <div class="form-group">
+              <label>Role</label>
+              <select id="adminRole" required>
+                <option value="super_admin">Super Admin</option>
+                <option value="manager">Manager</option>
+                <option value="support">Support</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select id="adminStatus" required>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-outline" onclick="closeModal('adminModal')">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin-primary">Save Admin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-admin" id="adminToast"></div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/admin-data.js"></script>
+  <script src="../js/tryon.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

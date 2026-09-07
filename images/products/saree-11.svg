@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="g11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9C4"/>
+      <stop offset="100%" stop-color="#FFEB3B"/>
+    </linearGradient>
+    <pattern id="kota" width="25" height="25" patternUnits="userSpaceOnUse">
+      <rect width="25" height="25" fill="none" stroke="#F9A825" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="500" fill="#FFF8E1"/>
+  <rect x="20" y="20" width="360" height="460" fill="url(#g11)" rx="4"/>
+  <rect x="20" y="20" width="360" height="460" fill="url(#kota)"/>
+  <path d="M60 60 L340 60 L320 440 L80 440 Z" fill="#FFFDE7"/>
+  <path d="M265 60 L340 60 L320 440 L245 440 Z" fill="#FF9800" opacity="0.5"/>
+  <text x="200" y="480" text-anchor="middle" fill="#E65100" font-family="Georgia,serif" font-size="14">Kota Doria</text>
+</svg>

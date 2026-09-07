@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="g12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B5E20"/>
+      <stop offset="50%" stop-color="#2E7D32"/>
+      <stop offset="100%" stop-color="#004D40"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B8944A"/>
+      <stop offset="50%" stop-color="#F0D78C"/>
+      <stop offset="100%" stop-color="#B8944A"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="#0D2818"/>
+  <rect x="20" y="20" width="360" height="460" fill="url(#g12)" rx="4"/>
+  <path d="M60 60 L340 60 L320 440 L80 440 Z" fill="#388E3C" opacity="0.4"/>
+  <path d="M220 60 L340 60 L320 440 L200 440 Z" fill="#1B5E20"/>
+  <path d="M60 60 Q200 35 340 60" fill="none" stroke="url(#gold)" stroke-width="4"/>
+  <!-- Peacock motif -->
+  <g transform="translate(200,320)">
+    <path d="M0 -40 Q-30 -20 -25 10 Q-15 30 0 20 Q15 30 25 10 Q30 -20 0 -40" fill="#00897B" opacity="0.8"/>
+    <circle cx="0" cy="-15" r="8" fill="#FFD700"/>
+    <path d="M-20 5 Q-35 25 -20 40" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    <path d="M20 5 Q35 25 20 40" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    <path d="M-10 10 Q-25 30 -10 45" fill="none" stroke="#81C784" stroke-width="1.5"/>
+    <path d="M10 10 Q25 30 10 45" fill="none" stroke="#81C784" stroke-width="1.5"/>
+  </g>
+  <text x="200" y="480" text-anchor="middle" fill="#C9A962" font-family="Georgia,serif" font-size="14">Paithani Peacock</text>
+</svg>

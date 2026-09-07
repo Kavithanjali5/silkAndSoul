@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Silk & Soul - Premium handwoven sarees. Banarasi, Kanjeevaram, Silk, Cotton & Designer collections.">
+  <title>Silk & Soul | Premium Handwoven Sarees</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-tag">✦ Heritage Since 2010</div>
+        <h1>Drape Yourself in <span>Timeless Elegance</span></h1>
+        <p>Discover authentic handwoven sarees from Banaras to Kanchipuram. Each piece tells a story of heritage, craftsmanship, and grace.</p>
+        <div class="hero-buttons">
+          <a href="shop.html" class="btn btn-gold btn-lg">Shop Collection</a>
+          <a href="about.html" class="btn btn-outline btn-lg">Our Story</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>500+</strong><span>Unique Designs</span></div>
+          <div class="hero-stat"><strong>50K+</strong><span>Happy Customers</span></div>
+          <div class="hero-stat"><strong>100+</strong><span>Master Weavers</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-frame">
+          <img src="images/hero/hero-main.svg" alt="Elegant saree collection">
+        </div>
+        <div class="hero-float-card card-1">
+          <strong>4.9★</strong>
+          <span>Customer Rating</span>
+        </div>
+        <div class="hero-float-card card-2">
+          <strong>New</strong>
+          <span>Spring Collection</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-strip">
+    <div class="features-wrap">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h4>Free Shipping</h4>
+        <p>On orders above ₹5,000</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h4>100% Authentic</h4>
+        <p>Certified handloom sarees</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        </div>
+        <h4>Easy Returns</h4>
+        <p>7-day hassle-free returns</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h4>Secure Payment</h4>
+        <p>UPI, Cards & COD available</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="subtitle">Collections</p>
+        <h2>Shop by Category</h2>
+        <p>From bridal Banarasi to everyday cotton — find the perfect saree for every occasion</p>
+      </div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <div class="section-header">
+        <p class="subtitle">Curated for You</p>
+        <h2>Featured Sarees</h2>
+        <p>Handpicked bestsellers loved by our customers</p>
+      </div>
+      <div class="product-grid" id="featuredProducts"></div>
+      <div class="text-center mt-4">
+        <a href="shop.html" class="btn btn-primary btn-lg">View All Sarees</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="promo-banner">
+      <div>
+        <h2>Bridal Collection 2026</h2>
+        <p>Exclusive Banarasi & Kanjeevaram sarees crafted for your special day. Up to 20% off this season.</p>
+        <a href="shop.html?occasion=wedding" class="btn btn-gold btn-lg">Explore Bridal</a>
+      </div>
+      <div class="promo-visual">
+        <img src="images/products/saree-08.svg" alt="Bridal saree collection">
+      </div>
+    </div>
+  </section>
+
+  <section class="section testimonials">
+    <div class="container">
+      <div class="section-header">
+        <p class="subtitle">Testimonials</p>
+        <h2>What Our Customers Say</h2>
+      </div>
+      <div class="testimonial-grid" id="testimonials"></div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container">
+      <h2>New Arrivals Every Week</h2>
+      <p>Subscribe to get early access to fresh collections and exclusive offers</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing!'); this.reset();">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn btn-gold">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/tryon.js"></script>
+  <script>
+    initPage('home');
+
+    const catLabels = {
+      banarasi: 'Luxury silk weaves',
+      kanjeevaram: 'Temple border classics',
+      silk: 'Pure & tussar silk',
+      cotton: 'Comfort daily wear',
+      designer: 'Contemporary styles'
+    };
+
+    async function renderHome() {
+      await loadStoreData();
+      const featured = PRODUCTS.filter(p => p.featured);
+      const gridProducts = featured.length ? featured : PRODUCTS.slice(0, 8);
+
+      document.getElementById('categoryGrid').innerHTML =
+        CATEGORIES.filter(c => c.id !== 'all').map(c => `
+          <a href="shop.html?category=${c.id}" class="category-card">
+            <img src="${c.image}" alt="${c.name}">
+            <div class="category-ring">→</div>
+            <div class="category-overlay">
+              <h3>${c.name}</h3>
+              <span>${catLabels[c.id] || ''}</span>
+            </div>
+          </a>
+        `).join('');
+
+      document.getElementById('featuredProducts').innerHTML = gridProducts.length
+        ? gridProducts.map(renderProductCard).join('')
+        : `<div class="empty-state" style="grid-column:1/-1;padding:48px;text-align:center"><strong>No products yet</strong><p>Add sarees from the Admin Inventory panel (MongoDB).</p></div>`;
+
+      document.getElementById('testimonials').innerHTML = TESTIMONIALS.length
+        ? TESTIMONIALS.map(t => `
+            <div class="testimonial-card">
+              <div class="stars">${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</div>
+              <p>"${t.text}"</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">${t.avatar}</div>
+                <div>
+                  <strong>${t.name}</strong>
+                  <span>${t.location}</span>
+                </div>
+              </div>
+            </div>
+          `).join('')
+        : '';
+    }
+
+    renderHome();
+  </script>
+</body>
+</html>

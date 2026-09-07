@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="g10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A148C"/>
+      <stop offset="50%" stop-color="#7B1FA2"/>
+      <stop offset="100%" stop-color="#311B92"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B8944A"/>
+      <stop offset="50%" stop-color="#F0D78C"/>
+      <stop offset="100%" stop-color="#B8944A"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="#1A0A2E"/>
+  <rect x="20" y="20" width="360" height="460" fill="url(#g10)" rx="4"/>
+  <path d="M60 60 L340 60 L320 440 L80 440 Z" fill="#6A1B9A" opacity="0.5"/>
+  <path d="M250 60 L340 60 L320 440 L230 440 Z" fill="#4A148C"/>
+  <path d="M60 60 Q200 38 340 60" fill="none" stroke="url(#gold)" stroke-width="3"/>
+  <g fill="#FFD700" opacity="0.7">
+    <circle cx="170" cy="220" r="28" fill="none" stroke="#FFD700" stroke-width="1.5"/>
+    <circle cx="170" cy="220" r="10"/>
+    <circle cx="170" cy="330" r="20" fill="none" stroke="#FFD700" stroke-width="1"/>
+  </g>
+  <text x="200" y="480" text-anchor="middle" fill="#E1BEE7" font-family="Georgia,serif" font-size="14">Mysore Silk</text>
+</svg>
