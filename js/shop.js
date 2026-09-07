@@ -97,7 +97,8 @@ function applyFilter(key, value) {
   const params = new URLSearchParams(window.location.search);
   if (value) params.set(key, value);
   else params.delete(key);
-  window.location.search = params.toString();
+  history.pushState(null, "", `${location.pathname}?${params}`);
+  initShopPage();
 }
 
 function applyFilters() {
@@ -115,7 +116,8 @@ function applyFilters() {
   if (max) params.set("maxPrice", max);
   else params.delete("maxPrice");
 
-  window.location.search = params.toString();
+  history.pushState(null, "", `${location.pathname}?${params}`);
+  initShopPage();
 }
 
 function toggleFilters() {
@@ -392,3 +394,11 @@ function initWishlistPage() {
     `;
   });
 }
+
+// Keep filtering in place, including browser back/forward navigation.
+window.addEventListener("popstate", () => {
+  if (document.getElementById("productGrid")) initShopPage();
+});
+document.getElementById("searchInput")?.addEventListener("keydown", event => {
+  if (event.key === "Enter") { event.preventDefault(); applyFilters(); }
+});

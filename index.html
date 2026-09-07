@@ -6,43 +6,22 @@
   <meta name="description" content="Silk & Soul - Premium handwoven sarees. Banarasi, Kanjeevaram, Silk, Cotton & Designer collections.">
   <title>Silk & Soul | Premium Handwoven Sarees</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/editorial.css">
 </head>
 <body>
   <div id="site-header"></div>
 
-  <section class="hero">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-tag">✦ Heritage Since 2010</div>
-        <h1>Drape Yourself in <span>Timeless Elegance</span></h1>
-        <p>Discover authentic handwoven sarees from Banaras to Kanchipuram. Each piece tells a story of heritage, craftsmanship, and grace.</p>
-        <div class="hero-buttons">
-          <a href="shop.html" class="btn btn-gold btn-lg">Shop Collection</a>
-          <a href="about.html" class="btn btn-outline btn-lg">Our Story</a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat"><strong>500+</strong><span>Unique Designs</span></div>
-          <div class="hero-stat"><strong>50K+</strong><span>Happy Customers</span></div>
-          <div class="hero-stat"><strong>100+</strong><span>Master Weavers</span></div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-frame">
-          <img src="images/hero/hero-main.svg" alt="Elegant saree collection">
-        </div>
-        <div class="hero-float-card card-1">
-          <strong>4.9★</strong>
-          <span>Customer Rating</span>
-        </div>
-        <div class="hero-float-card card-2">
-          <strong>New</strong>
-          <span>Spring Collection</span>
-        </div>
-      </div>
+  <section class="editorial-hero" aria-label="The Silk & Soul collection">
+    <div class="editorial-copy">
+      <span class="eyebrow">THE SILK & SOUL EDIT</span>
+      <h1>A little heritage.<br>A lot of <em>soul.</em></h1>
+      <p>Beautiful weaves. Expressive colours. Sarees to make entirely your own.</p>
+      <a href="shop.html" class="editorial-link">EXPLORE THE COLLECTION <span>&#8599;</span></a>
+      <a href="about.html" class="story-link">Discover our story</a>
+      <span class="hero-footnote">TRADITION, WITH A FRESH PERSPECTIVE</span>
     </div>
+    <div class="editorial-photo"><img src="attachments/ea5f8825-002f-478d-9bd9-626d8cb3968e.JPG" alt="Our blush pink saree with a lustrous silver blue border" fetchpriority="high"><span>01 / THE EVERYDAY EXTRAORDINARY</span></div>
+    <div class="editorial-side"><img src="attachments/2593f2b0-8cb8-46f0-9ee3-800c311fcf1b.JPG" alt="Detail of our silver saree's woven botanical motifs" fetchpriority="high"><span>BEAUTY IN EVERY THREAD</span></div>
   </section>
 
   <section class="features-strip">
@@ -82,7 +61,7 @@
     <div class="container">
       <div class="section-header">
         <p class="subtitle">Collections</p>
-        <h2>Shop by Category</h2>
+        <h2>Find your kind of beautiful</h2>
         <p>From bridal Banarasi to everyday cotton — find the perfect saree for every occasion</p>
       </div>
       <div class="category-grid" id="categoryGrid"></div>
@@ -93,8 +72,8 @@
     <div class="container">
       <div class="section-header">
         <p class="subtitle">Curated for You</p>
-        <h2>Featured Sarees</h2>
-        <p>Handpicked bestsellers loved by our customers</p>
+        <h2>The considered collection</h2>
+        <p>Distinctive drapes, selected with soul.</p>
       </div>
       <div class="product-grid" id="featuredProducts"></div>
       <div class="text-center mt-4">
@@ -106,12 +85,12 @@
   <section class="section" style="padding-top: 0;">
     <div class="promo-banner">
       <div>
-        <h2>Bridal Collection 2026</h2>
-        <p>Exclusive Banarasi & Kanjeevaram sarees crafted for your special day. Up to 20% off this season.</p>
+        <span class="eyebrow">FOR THE MOMENTS THAT MATTER</span><h2>Made for<br><em>memories.</em></h2>
+        <p>Discover the bridal edit. Rich colours and beautiful details for your most meaningful celebrations.</p>
         <a href="shop.html?occasion=wedding" class="btn btn-gold btn-lg">Explore Bridal</a>
       </div>
       <div class="promo-visual">
-        <img src="images/products/saree-08.svg" alt="Bridal saree collection">
+        <img src="attachments/d3854ad5-e75c-474c-be77-c63736462241.JPG" alt="Bridal saree collection">
       </div>
     </div>
   </section>
@@ -131,7 +110,7 @@
       <h2>New Arrivals Every Week</h2>
       <p>Subscribe to get early access to fresh collections and exclusive offers</p>
       <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing!'); this.reset();">
-        <input type="email" placeholder="Enter your email" required>
+        <input type="email" aria-label="Email address" placeholder="Your email address" required>
         <button type="submit" class="btn btn-gold">Subscribe</button>
       </form>
     </div>
@@ -173,8 +152,9 @@
 
       document.getElementById('featuredProducts').innerHTML = gridProducts.length
         ? gridProducts.map(renderProductCard).join('')
-        : `<div class="empty-state" style="grid-column:1/-1;padding:48px;text-align:center"><strong>No products yet</strong><p>Add sarees from the Admin Inventory panel (MongoDB).</p></div>`;
+        : [ { image: 'attachments/ea5f8825-002f-478d-9bd9-626d8cb3968e.JPG', name: 'Soft tones, striking details' }, { image: 'attachments/d3854ad5-e75c-474c-be77-c63736462241.JPG', name: 'A celebration of colour' }, { image: 'attachments/2593f2b0-8cb8-46f0-9ee3-800c311fcf1b.JPG', name: 'The art of the weave' }, { image: 'attachments/f4e3f845-3f5f-4bdc-944b-725ca9481c26.JPG', name: 'An everyday statement' } ].map(item => `<a class="collection-preview" href="contact.html"><img src="${item.image}" alt="${item.name}" loading="lazy"><div><h3>${item.name}</h3><span>Enquire about this design &#8599;</span></div></a>`).join('');
 
+      document.querySelector('.testimonials').hidden = !TESTIMONIALS.length;
       document.getElementById('testimonials').innerHTML = TESTIMONIALS.length
         ? TESTIMONIALS.map(t => `
             <div class="testimonial-card">
@@ -194,5 +174,6 @@
 
     renderHome();
   </script>
+  <script src="js/interactions.js"></script>
 </body>
 </html>

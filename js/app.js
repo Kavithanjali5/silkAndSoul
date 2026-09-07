@@ -198,7 +198,7 @@ function renderHeader(activePage = "") {
           </span>
           <span class="logo-text">${STORE_NAME}</span>
         </a>
-        <button class="mobile-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
+        <button class="mobile-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="toggleMobileMenu()">
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-links" id="navLinks">
@@ -286,7 +286,8 @@ function renderFooter() {
 }
 
 function toggleMobileMenu() {
-  document.getElementById("navLinks")?.classList.toggle("open");
+  const open = document.getElementById("navLinks")?.classList.toggle("open");
+  document.querySelector(".mobile-toggle")?.setAttribute("aria-expanded", String(!!open));
 }
 
 function initPage(activePage) {

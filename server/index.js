@@ -34,12 +34,12 @@ app.get('/api/health', (_req, res) => {
 
 app.get('/api/meta/categories', (_req, res) => {
   res.json([
-    { id: 'all', name: 'All Sarees', image: 'images/products/saree-01.svg' },
-    { id: 'banarasi', name: 'Banarasi', image: 'images/products/saree-01.svg' },
-    { id: 'kanjeevaram', name: 'Kanjeevaram', image: 'images/products/saree-02.svg' },
-    { id: 'silk', name: 'Silk', image: 'images/products/saree-10.svg' },
-    { id: 'cotton', name: 'Cotton', image: 'images/products/saree-03.svg' },
-    { id: 'designer', name: 'Designer', image: 'images/products/saree-04.svg' }
+    { id: 'all', name: 'All Sarees', image: 'attachments/d3854ad5-e75c-474c-be77-c63736462241.JPG' },
+    { id: 'banarasi', name: 'Banarasi', image: 'attachments/d3854ad5-e75c-474c-be77-c63736462241.JPG' },
+    { id: 'kanjeevaram', name: 'Kanjeevaram', image: 'attachments/2593f2b0-8cb8-46f0-9ee3-800c311fcf1b.JPG' },
+    { id: 'silk', name: 'Silk', image: 'attachments/ea5f8825-002f-478d-9bd9-626d8cb3968e.JPG' },
+    { id: 'cotton', name: 'Cotton', image: 'attachments/f4e3f845-3f5f-4bdc-944b-725ca9481c26.JPG' },
+    { id: 'designer', name: 'Designer', image: 'attachments/71d27dfb-7f35-4ed8-9808-939fafa44951.JPG' }
   ]);
 });
 
